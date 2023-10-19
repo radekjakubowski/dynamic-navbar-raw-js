@@ -20,9 +20,9 @@
     height: var(--navbar-height);
     width: 100%;
     background-color: gray;
-    transition: 300ms ease-in-out;
+    transition: transform 150ms ease-in-out;
 }
 
-.navbar__hidden {
+#navbar[hide] {
     transform: translateY(calc(var(--navbar-height) * -1));
 }

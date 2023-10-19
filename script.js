@@ -1,23 +1,26 @@
 const navbarHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--navbar-height'));
 const navbarElement = document.getElementById('navbar');
+let oldScrollPos = 0;
 let isHidden = false;
 
-window.addEventListener('wheel', (e) => {
+window.addEventListener('scroll', (e) => {
   if (window.scrollY > navbarHeight) {
     hideOnNavbarExceeding();
   }
 
-  if (window.scrollY > navbarHeight && e.deltaY < 0 && isHidden) {
+  if (window.scrollY > navbarHeight && oldScrollPos > window.scrollY && isHidden) {
     showOnScrollUp();
   }
+
+  oldScrollPos = window.scrollY;
 });
 
 const hideOnNavbarExceeding = () => {
-  navbarElement.classList.add('navbar__hidden');
+  navbarElement.setAttribute('hide', '');
   isHidden = true;
 }
 
 const showOnScrollUp = () => {
-  navbarElement.classList.remove('navbar__hidden');
+  navbarElement.removeAttribute('hide');
   isHidden = false;
 }
