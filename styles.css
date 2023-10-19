@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --navbar-height: 75px;
+}
+
+.wrapper {
+    height: 1000svh;
+    display: flex;
+    background: darkgray;
+}
+
+#navbar {
+    position: sticky;
+    inset: 0px;
+    height: var(--navbar-height);
+    width: 100%;
+    background-color: gray;
+    transition: 300ms ease-in-out;
+}
+
+.navbar__hidden {
+    transform: translateY(calc(var(--navbar-height) * -1));
+}
